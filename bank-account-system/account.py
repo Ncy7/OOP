@@ -23,6 +23,14 @@ class Account:
     def show_balance(self):
         print(f"{self.name}'s balance is Rs.{self.balance}")
 
+    def money_transfer(self, target_account, amount):
+        if 0 < amount <= self.balance:
+            self.withdraw(amount)
+            target_account.deposit(amount)
+            print(f"Transferred Rs.{amount} form {self.name} to {target_account.name}. ")
+        else:
+            print("Transfer amount must be positive and less than or equal to the balance.")
+
 if __name__ == "__main__":
     acc1 = Account("Nageshwor", 1000)
     acc2 = Account("Ramesh", 2000)
@@ -31,3 +39,5 @@ if __name__ == "__main__":
 
     acc1.show_balance()
     acc2.show_balance() 
+    acc1.money_transfer(acc2, 400)
+    
